@@ -24,10 +24,17 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests.Controllers
             await Task.CompletedTask;
         }
 
-        [HttpDelete]
-        public void Delete()
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            throw new Exception("Delete failed");
+            if (id > 0)
+            {
+                throw new NonSystemException("Delete failed");
+            }
+            else
+            {
+                throw new Exception("Delete failed");
+            }
         }
 
         [HttpPut]

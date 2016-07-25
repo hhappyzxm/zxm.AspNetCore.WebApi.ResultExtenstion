@@ -14,8 +14,11 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion
             var successed = context.Exception == null;
             if (!successed)
             {
-                context.Result = new ObjectResult(new WebApiResult(successed: false, message: context.Exception.Message));
-                context.ExceptionHandled = true;
+                if (context.Exception is NonSystemException)
+                {
+                    context.Result = new ObjectResult(new WebApiResult(successed: false, message: context.Exception.Message));
+                    context.ExceptionHandled = true;
+                }
             }
             else
             {

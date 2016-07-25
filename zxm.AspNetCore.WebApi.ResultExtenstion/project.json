@@ -1,7 +1,7 @@
 ﻿{
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [ "zxm" ],
-  "description": "zxm.AspNetCore.WebApi.ResultExtenstion is an extensions to always return an WebApiResult after WebApi action executed. Even if throw any exceptions during action executing, it will pack all mesages to WebApiResult, never return 500.",
+  "description": "zxm.AspNetCore.WebApi.ResultExtenstion is an extensions to return an WebApiResult after WebApi action executed.",
   "title": "zxm.AspNetCore.WebApi.ResultExtenstion",
   "copyright": "2016 © zxm",
   "packOptions": {

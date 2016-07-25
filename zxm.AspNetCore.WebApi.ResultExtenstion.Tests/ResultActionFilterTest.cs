@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Xunit;
 using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
@@ -19,8 +22,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
         public async Task TestActionSuccessed()
         {
             var response = await _server.CreateRequest("api/test").SendAsync("GET");
-
-            response.EnsureSuccessStatusCode();
+            
             var content = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<WebApiResult>(content);
 
@@ -34,8 +36,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
         public async Task TestActionSuccessedNoResult()
         {
             var response = await _server.CreateRequest("api/test").SendAsync("POST");
-
-            response.EnsureSuccessStatusCode();
+            
             var content = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<WebApiResult>(content);
 
@@ -46,9 +47,16 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
         }
 
         [Fact]
-        public async Task TestActionNotSuccessed()
+        public async Task TestActionSysteException()
         {
-            var response = await _server.CreateRequest("api/test").SendAsync("DELETE");
+            await
+                Assert.ThrowsAsync<Exception>(async () => await _server.CreateRequest("api/test/0").SendAsync("DELETE"));
+        }
+
+        [Fact]
+        public async Task TestActionNonSystemException()
+        {
+            var response = await _server.CreateRequest("api/test/1").SendAsync("DELETE");
 
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
@@ -65,8 +73,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
         public async Task TestActionSuccessedReturnJsonResult()
         {
             var response = await _server.CreateRequest("api/test").SendAsync("PUT");
-
-            response.EnsureSuccessStatusCode();
+            
             var content = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<WebApiResult>(content);
 
