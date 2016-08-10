@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": [ "zxm" ],
   "description": "zxm.AspNetCore.WebApi.ResultExtenstion is an extensions to return an WebApiResult after WebApi action executed.",
   "title": "zxm.AspNetCore.WebApi.ResultExtenstion",
