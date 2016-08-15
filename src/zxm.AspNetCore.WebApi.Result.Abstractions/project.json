@@ -1,8 +1,8 @@
 ﻿{
-  "version": "1.0.4",
+  "version": "1.0.0",
   "authors": [ "zxm" ],
-  "description": "zxm.AspNetCore.WebApi.ResultExtenstion is an extensions to return an WebApiResult after WebApi action executed.",
-  "title": "zxm.AspNetCore.WebApi.ResultExtenstion",
+  "description": "zxm.AspNetCore.WebApi.Result.Abstractions is zxm.AspNetCore.WebApi.ResultExtenstion abstractions.",
+  "title": "zxm.AspNetCore.WebApi.Result.Abstractions",
   "copyright": "2016 © zxm",
   "packOptions": {
     "owners": [ "zxm" ],
@@ -16,12 +16,14 @@
   },
 
   "dependencies": {
-    "Microsoft.AspNetCore.Mvc": "1.0.0",
-    "zxm.AspNetCore.WebApi.Result.Abstractions": {"target": "project"}
   },
 
   "frameworks": {
-    "netstandard1.6": {},
+    "netstandard1.3": {
+      "dependencies": {
+        "System.Runtime": "4.1.0"
+      }
+    },
     "net451": {}
   }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using zxm.AspNetCore.WebApi.Result.Abstractions;
 
 namespace zxm.AspNetCore.WebApi.ResultExtenstion
 {
@@ -16,7 +17,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion
             {
                 if (context.Exception is NonSystemException)
                 {
-                    context.Result = new ObjectResult(new WebApiResult(successed: false, message: context.Exception.Message));
+                    context.Result = new ObjectResult(new WebApiResult(ErrorCode.InternalServerError, context.Exception.Message));
                     context.ExceptionHandled = true;
                 }
             }
@@ -27,16 +28,16 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion
                     if (context.Result is ObjectResult)
                     {
                         var originalResult = (ObjectResult) context.Result;
-                        context.Result = new ObjectResult(new WebApiResult(true, originalResult.Value));
+                        context.Result = new ObjectResult(new WebApiResult(originalResult.Value));
                     }
                     else if (context.Result is EmptyResult)
                     {
-                        context.Result = new ObjectResult(new WebApiResult(true));
+                        context.Result = new ObjectResult(new WebApiResult());
                     }
                     else if (context.Result is JsonResult)
                     {
                         var originalResult = (JsonResult)context.Result;
-                        context.Result = new JsonResult(new WebApiResult(true, originalResult.Value));
+                        context.Result = new JsonResult(new WebApiResult(originalResult.Value));
                     }
                 }
                 else

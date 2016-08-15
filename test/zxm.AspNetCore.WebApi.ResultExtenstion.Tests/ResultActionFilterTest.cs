@@ -6,6 +6,7 @@ using Xunit;
 using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
 using zxm.AspNetCore.WebApi.ResultExtenstion.Tests.Fixture;
+using zxm.AspNetCore.WebApi.Result.Abstractions;
 
 namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
 {
@@ -66,7 +67,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
             Assert.IsType<WebApiResult>(result);
             Assert.Equal(result.Successed, false);
             Assert.Null(result.Value);
-            Assert.Equal(result.Message, "Delete failed");
+            Assert.Equal(result.ErrorMessage, "Delete failed");
         }
 
         [Fact]
