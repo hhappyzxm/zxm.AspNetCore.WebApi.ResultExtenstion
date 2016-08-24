@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.1",
+  "version": "1.0.3",
   "authors": [ "zxm" ],
   "description": "zxm.AspNetCore.WebApi.Result.Abstractions is zxm.AspNetCore.WebApi.ResultExtenstion abstractions.",
   "title": "zxm.AspNetCore.WebApi.Result.Abstractions",
