@@ -29,7 +29,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests.Controllers
         {
             if (id > 0)
             {
-                throw new NonSystemException("Delete failed");
+                throw new Exception("Delete failed");
             }
             else
             {

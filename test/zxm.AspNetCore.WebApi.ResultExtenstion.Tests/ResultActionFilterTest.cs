@@ -6,7 +6,6 @@ using Xunit;
 using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
 using zxm.AspNetCore.WebApi.ResultExtenstion.Tests.Fixture;
-using zxm.AspNetCore.WebApi.Result.Abstractions;
 
 namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
 {
@@ -29,7 +28,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
 
             // Assert
             Assert.IsType<WebApiResult>(result);
-            Assert.Equal(result.Successed, true);
+            Assert.Equal(result.Success, true);
             Assert.Equal(result.Value.ToString(), "Get is ok");
         }
 
@@ -43,7 +42,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
 
             // Assert
             Assert.IsType<WebApiResult>(result);
-            Assert.Equal(result.Successed, true);
+            Assert.Equal(result.Success, true);
             Assert.Null(result.Value);
         }
 
@@ -65,7 +64,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
 
             // Assert
             Assert.IsType<WebApiResult>(result);
-            Assert.Equal(result.Successed, false);
+            Assert.Equal(result.Success, false);
             Assert.Null(result.Value);
             Assert.Equal(result.ErrorMessage, "Delete failed");
         }
@@ -80,7 +79,7 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion.Tests
 
             // Assert
             Assert.IsType<WebApiResult>(result);
-            Assert.Equal(result.Successed, true);
+            Assert.Equal(result.Success, true);
             Assert.Equal(result.Value.ToString(), "Put is ok");
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace zxm.AspNetCore.WebApi.Result.Abstractions
+﻿namespace zxm.AspNetCore.WebApi.ResultExtenstion
 {
     /// <summary>
     /// WebApiResult model for webapi response
@@ -9,7 +9,7 @@
 
         object Value { get; set; }
 
-        ErrorCode ErrorCode { get; set; }
+        string ErrorCode { get; set; }
 
         string ErrorMessage { get; set; }
     }

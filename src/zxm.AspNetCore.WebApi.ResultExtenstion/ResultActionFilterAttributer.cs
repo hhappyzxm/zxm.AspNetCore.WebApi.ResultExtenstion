@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using zxm.AspNetCore.WebApi.Result.Abstractions;
 
 namespace zxm.AspNetCore.WebApi.ResultExtenstion
 {
@@ -12,14 +11,11 @@ namespace zxm.AspNetCore.WebApi.ResultExtenstion
     {
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            var successed = context.Exception == null;
-            if (!successed)
+            var success = context.Exception == null;
+            if (!success)
             {
-                if (context.Exception is NonSystemException)
-                {
-                    context.Result = new ObjectResult(new WebApiResult(ErrorCode.InternalServerError, context.Exception.Message));
-                    context.ExceptionHandled = true;
-                }
+                context.Result = new ObjectResult(new WebApiResult(context.Exception.Message));
+                context.ExceptionHandled = true;
             }
             else
             {
